@@ -1,4 +1,4 @@
-package main.java.com.iticbcn.apireactive.config;
+package com.iticbcn.apireactive.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
