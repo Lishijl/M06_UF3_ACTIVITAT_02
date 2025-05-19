@@ -1,7 +1,7 @@
 package com.iticbcn.apireactive.DTO;
 
 public record StudentDTO(
-        int id,
+        String id,
         String name,
         String surname,
         String email,
