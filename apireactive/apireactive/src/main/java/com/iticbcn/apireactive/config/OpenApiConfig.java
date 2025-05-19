@@ -15,8 +15,8 @@ public class OpenApiConfig implements WebFluxConfigurer {
 	public OpenAPI customOpenAPI() {
     	return new OpenAPI()
             	.info(new Info()
-                    	.title("API REST WebFlux d'Estudiants")
-                    	.version("1.0")
-                    	.description("Documentació de l'API REST WebFlux d'Estudiants"));
+				.title("API REST WebFlux d'Estudiants")
+				.version("1.0")
+				.description("Documentació de l'API REST WebFlux d'Estudiants"));
 	}
 }
