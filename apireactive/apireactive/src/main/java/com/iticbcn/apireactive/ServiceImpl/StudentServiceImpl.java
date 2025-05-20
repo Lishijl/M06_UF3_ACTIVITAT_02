@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import com.iticbcn.apireactive.DTO.StudentDTO;
 import com.iticbcn.apireactive.Service.StudentService;
 import com.iticbcn.apireactive.mapper.DocumentMapper;
-import com.iticbcn.apireactive.model.Student;
 import com.iticbcn.apireactive.repository.StudentRepo;
 
 import reactor.core.publisher.Flux;
@@ -38,23 +37,30 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Mono<StudentDTO> save(StudentDTO studentDTO) {
-        // convierto el DTO a Student para guardarlo en la base de datos
+        // Primero verifico si el estudiante ya existe en la BBDD con el id,
+        // si no existe, lo guardo y si no, no hago nada
+
+        // Convierto el DTO a Student, lo persisto en la base de datos
         // y luego lo convierto a DTO para devolverlo
-        Student student = documentMapper.toEntity(studentDTO);
-        return studentRepo.save(student).map(documentMapper::toDTO);
+        return studentRepo.findById(studentDTO.id()).flatMap(existeix -> 
+             studentRepo.save(documentMapper.toEntity(studentDTO)).map(documentMapper::toDTO));
     }
 
     @Override
     public Mono<StudentDTO> update(StudentDTO studentDTO) {
-        // convierto el DTO a Student para actualizarlo en la base de datos
+        // Primero verifico si el estudiante ya existe en la BBDD con el id,
+        // si existe, lo actualizo y si no, no hago nada.
+
+        // convierto el DTO a Student, lo persisto en la base de datos
         // y luego lo convierto a DTO para devolverlo
-        Student student = documentMapper.toEntity(studentDTO);
-        return studentRepo.save(student).map(documentMapper::toDTO);
+        return studentRepo.findById(studentDTO.id()).flatMap(existeix -> 
+             studentRepo.save(documentMapper.toEntity(studentDTO)).map(documentMapper::toDTO));
     }
 
     @Override
     public Mono<Void> delete(String id) {
-        // elimino el estudiante por id
-        return studentRepo.deleteById(id);
+        // Solo eliminará el estudiante si existe la ID en la BBDD
+        return studentRepo.findById(id).flatMap(existeix -> 
+             studentRepo.deleteById(id));
     }    
 }
