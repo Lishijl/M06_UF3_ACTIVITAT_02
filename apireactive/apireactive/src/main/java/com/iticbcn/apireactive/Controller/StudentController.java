@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iticbcn.apireactive.DTO.StudentDTO;
@@ -15,6 +16,7 @@ import com.iticbcn.apireactive.Service.StudentService;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
 
 @RestController
 @RequestMapping("/api/v1/students")
@@ -47,4 +49,11 @@ public class StudentController {
     public Mono<Void> delete(@PathVariable String id) {
         return studentService.delete(id);
     }
+
+    @GetMapping("/search/{name}")
+    public Flux<StudentDTO> findByName(@PathVariable String name){
+        // busco el estudiante por nombre y lo convierto a DTO
+        return studentService.findByName(name);
+    }    
+    
 }

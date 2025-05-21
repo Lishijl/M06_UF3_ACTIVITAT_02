@@ -57,4 +57,10 @@ public class StudentServiceImpl implements StudentService {
         // elimino el estudiante por id
         return studentRepo.deleteById(id);
     }    
+
+    @Override
+    public Flux<StudentDTO> findByName(String name) {
+        // busco el estudiante por nombre y lo convierto a DTO
+        return studentRepo.findByNameRegex(name).map(documentMapper::toDTO);
+    }
 }
