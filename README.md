@@ -3,11 +3,12 @@ API REACTIVA, SPRINGBOOT I MONGODB
 
 Captures de swagger
 
-![Captura de Swagger](img/endpoints.png)
+![image](https://github.com/user-attachments/assets/b7aca900-4c76-4511-953e-299120c655f7)
+
 
 1. Afegiu un endpoint que cerqui per un camp de tipus String on feu servir regex. Afegiu el que calgui al servei, repositori, etc.
 
-![Captura de Swagger](img/endpointafegit.png)
+![image](https://github.com/user-attachments/assets/7b3cd870-9ece-4266-913d-8159f5a7da54)
 
 2. Què caracteritza una api reactiva com aquesta i què la fa diferent d’una api síncrona amb MVC com les treballades anteriorment?
 
