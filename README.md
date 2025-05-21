@@ -20,16 +20,14 @@ En canvi, en una API MVC convencional, cada sol·licitud atura la connexió fins
 Mono i Flux són tipus proporcionats per la biblioteca Project Reactor , que s’utilitza en la programació reactiva amb Spring WebFlux . Aquests tipus permeten gestionar dades de manera asíncrona i no bloquejant, essencials per aconseguir una API eficient i escalable.
 
 - Mono representa una seqüència asíncrona que pot contenir 0 o 1 element. S'utilitza quan esperem un sol resultat, com ara buscar un estudiant per id.
-Mono<StudentDTO> findById(String id);
-
 - Flux , en canvi, representa una seqüència asíncrona que pot contenir 0, 1 o múltiples elements. És ideal per obtenir més d’un resultat, com ara una llista completa d’estudiants.
-Flux<StudentDTO> findAll();
 
 Aquests tipus són molt útils en la programació reactiva perquè permeten gestionar operacions sense bloquejar l’execució del programa. Això vol dir que l’aplicació pot seguir processant altres tasques mentre espera el resultat d’una consulta a la base de dades o d’una crida externa, millorant significativament el rendiment i l’escalabilitat, especialment en aplicacions amb molta càrrega o que fan servir moltes operacions d’entrada/sortida (I/O).
 
-En aquest projecte, Mono i Flux es fan servir als controladors, serveis i repositoris per treballar amb les dades procedents de MongoDB de manera reactiva, seguint les bones pràctiques de disseny d’API modernes.
+En aquest projecte, Mono i Flux es fan servir als controladors, serveis i repositoris per treballar amb les dades procedents de MongoDB de manera reactiva.
 
 4. Què és record? Un record utilitza getters i setters? Justifiqueu la resposta
+
 Un record és una nova funcionalitat introduïda a Java 16 que permet declarar classes immutables , és a dir, que no poden ser modificades un cop creades. És especialment útil per crear classes senzilles amb pocs camps, com és el cas dels DTO (Data Transfer Objects) , utilitzats per transferir dades entre diferents capes d’una aplicació.
 Utilitza getters i setters?
 No, els records no tenen setters , ja que són immutables per definició. Cada atribut disposa d’un getter automàtic , però el seu valor no es pot modificar després de la creació de l’objecte.
