@@ -17,6 +17,6 @@ public interface StudentService {
     // Mono<Void> cuando no devuelve nada y es reactivo 
     Mono<Void> delete(String id);
 
-    //find by name
-    Flux<StudentDTO> findByName(String name);
+    // encuentra el nombre del estudiante con regex
+    Flux<StudentDTO> findByNamePattern(String name);
 }

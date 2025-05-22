@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iticbcn.apireactive.DTO.StudentDTO;
@@ -51,9 +50,9 @@ public class StudentController {
     }
 
     @GetMapping("/search/{name}")
-    public Flux<StudentDTO> findByName(@PathVariable String name){
-        // busco el estudiante por nombre y lo convierto a DTO
-        return studentService.findByName(name);
+    public Flux<StudentDTO> findByNamePattern(@PathVariable String name){
+        // busco el o los estudiantes por nombre y lo convierto a DTO
+        return studentService.findByNamePattern(name);
     }    
     
 }

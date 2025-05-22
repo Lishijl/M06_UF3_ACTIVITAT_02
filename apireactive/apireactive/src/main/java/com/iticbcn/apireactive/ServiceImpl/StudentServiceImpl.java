@@ -1,5 +1,7 @@
 package com.iticbcn.apireactive.ServiceImpl;
 
+import java.util.regex.Pattern;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -63,14 +65,11 @@ public class StudentServiceImpl implements StudentService {
         return studentRepo.findById(id).flatMap(existeix -> 
              studentRepo.deleteById(id));
     }    
-<<<<<<< HEAD
 
     @Override
-    public Flux<StudentDTO> findByName(String name) {
-        // busco el estudiante por nombre y lo convierto a DTO
-        return studentRepo.findByNameRegex(name).map(documentMapper::toDTO);
+    public Flux<StudentDTO> findByNamePattern(String name) {
+        // Usamos ".*" para que actúe como un "contains"
+        String regex = ".*" + Pattern.quote(name) + ".*";
+        return studentRepo.findByNamePattern(regex).map(documentMapper::toDTO);
     }
 }
-=======
-}
->>>>>>> 36b3f310f9d9b5a1d0163cd35f9c26718861a3f6
